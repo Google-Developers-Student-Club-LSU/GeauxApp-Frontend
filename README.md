@@ -1,4 +1,4 @@
-# geaux_app_frontend
+# Geaux_App_Frontend
 
 Google Development Student Club Project
 
@@ -21,14 +21,15 @@ This project is a starting point for a Flutter application. Download Git.
         - git rebase main
 
 feature/name-of-your-branch -> Type/Short-Description <br>
-Type -> feature/    (new edits)<br>
-    fix/    (minor fix)<br>
-    bug/    (similar to fix)<br>
-    hotfix/    (major fix)<br>
-    docs/     (doc changes Ex. Readme.md)<br>
-    refactor/    (code cleanup/imporvements)
+Type:
+- feature/    (new edits)
+- fix/    (minor fix)
+- bug/    (similar to fix)
+- hotfix/    (major fix)
+- docs/     (doc changes Ex. Readme.md)
+- refactor/    (code cleanup/imporvements)
 
-Separator -> / (Always have a forward slash)
+Separator -> / (Always have a forward slash) <br>
 Short-Description -> Name of the branch
 
 3. Make changes (Edits in VScode)
