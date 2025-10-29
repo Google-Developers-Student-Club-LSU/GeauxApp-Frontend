@@ -6,7 +6,7 @@ URL: https://github.com/Google-Developers-Student-Club-LSU/GeauxApp-Frontend
 
 ## Getting Started (Contributers)
 
-This project is a starting point for a Flutter application.
+This project is a starting point for a Flutter application. Download Git.
 
 1. To get started clone the repo. 
     - git clone https://github.com/Google-Developers-Student-Club-LSU/GeauxApp-Frontend
@@ -20,12 +20,12 @@ This project is a starting point for a Flutter application.
         - git checkout feature/name-of-your-branch (**If branch is already create and going back to make changes, skip step 1 if you already made a branch)
         - git rebase main
 
-feature/name-of-your-branch -> Type/Short-Description
-Type -> feature/    (new edits)
-        fix/        (minor fix)
-        bug/        (similar to fix)
-        hotfix/     (major fix)
-        docs/       (doc changes Ex. Readme.md)
+feature/name-of-your-branch -> Type/Short-Description <br>
+Type -> feature/    (new edits)<br>
+        fix/        (minor fix)<br>
+        bug/        (similar to fix)<br>
+        hotfix/     (major fix)<br>
+        docs/       (doc changes Ex. Readme.md)<br>
         refactor/   (code cleanup/imporvements)
 
 Separator -> / (Always have a forward slash)
