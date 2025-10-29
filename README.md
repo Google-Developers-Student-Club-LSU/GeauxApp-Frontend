@@ -13,23 +13,26 @@ This project is a starting point for a Flutter application. Download Git.
     - cd GeauxApp-Frontend
 
 2. Create a branch **Always create a branch for each task assign to you
+*feature/name-of-your-branch -> Type/Short-Description <br>
+Type:
+- feature/    (new edits)
+- fix/    (minor fix)
+- bug/    (similar to fix)
+- hotfix/    (major fix)
+- docs/     (doc changes Ex. Readme.md)
+- refactor/    (code cleanup/imporvements)
+
+Separator -> / (Always have a forward slash) <br>
+Short-Description -> Name of the branch
+
     - git checkout main
     - git pull origin main
     - git checkout -b feature/name-of-your-branch (**Only for creating a new branch)
     - (Going back to old branch for more changes **always do this if your going back to old branch)
         - git checkout feature/name-of-your-branch (**If branch is already create and going back to make changes, skip step 1 if you already made a branch)
         - git rebase main
-        feature/name-of-your-branch -> Type/Short-Description <br>
-        Type:
-        - feature/    (new edits)
-        - fix/    (minor fix)
-        - bug/    (similar to fix)
-        - hotfix/    (major fix)
-        - docs/     (doc changes Ex. Readme.md)
-        - refactor/    (code cleanup/imporvements)
+        
 
-        Separator -> / (Always have a forward slash) <br>
-        Short-Description -> Name of the branch
 
 3. Make changes (Edits in VScode)
     - Go to VScode and make edits
