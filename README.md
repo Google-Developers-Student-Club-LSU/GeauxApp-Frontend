@@ -22,11 +22,11 @@ This project is a starting point for a Flutter application. Download Git.
 
 feature/name-of-your-branch -> Type/Short-Description <br>
 Type -> feature/    (new edits)<br>
-        fix/        (minor fix)<br>
-        bug/        (similar to fix)<br>
-        hotfix/     (major fix)<br>
-        docs/       (doc changes Ex. Readme.md)<br>
-        refactor/   (code cleanup/imporvements)
+    fix/    (minor fix)<br>
+    bug/    (similar to fix)<br>
+    hotfix/    (major fix)<br>
+    docs/     (doc changes Ex. Readme.md)<br>
+    refactor/    (code cleanup/imporvements)
 
 Separator -> / (Always have a forward slash)
 Short-Description -> Name of the branch
