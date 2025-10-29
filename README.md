@@ -33,7 +33,7 @@ Short-Description -> Name of the branch
         - git checkout feature/name-of-your-branch (**If branch is already create and going back to make changes, skip step 1 if you already made a branch)
         - git rebase main
         
-3. Make changes (Edits in VScode)
+3. Make changes (Edits in VScode) -> go to lib folder, every dart code will be located in lib
     - Go to VScode and make edits
     - F5 (run the emulator)
         - or bottom right there a button call 'no device' 
