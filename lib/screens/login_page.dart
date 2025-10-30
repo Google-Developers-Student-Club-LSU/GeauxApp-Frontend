@@ -15,3 +15,5 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
+// call to https, superbase - backend
+//storing the authentication token securely and refreshing it when necessary
