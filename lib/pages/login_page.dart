@@ -25,13 +25,9 @@ class _LoginPageState extends State<LoginPage> {
 
     try {
       // Call backend login
-      final response = await http.post(
-        Uri.parse('${_auth.backendBaseUrl}/auth/login'),
+      final response = await http.get(
+        Uri.parse('${_auth.backendBaseUrl}/auth/microsoft-login'),
         headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'email': 'user@example.com',   // Replace with actual user input
-          'password': 'supersecret',     // Replace with actual user input
-        }),
       );
 
       if (response.statusCode == 200) {
@@ -72,9 +68,7 @@ class _LoginPageState extends State<LoginPage> {
         const SnackBar(content: Text('Login failed. Please try again.')),
       );
     } finally {
-      if (mounted) {
-        setState(() => _isLoading = false);
-      }
+      if (mounted) setState(() => _isLoading = false);
     }
   }
 
