@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:geaux_app_frontend/pages/login_page.dart';
+import 'package:geaux_app_frontend/screens/login_page.dart';
 void main() {
   runApp(const MyApp());
 }
