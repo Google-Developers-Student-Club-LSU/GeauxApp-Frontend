@@ -8,10 +8,7 @@ class PostsDraggable extends StatelessWidget {
     return DraggableScrollableSheet(
       builder:  (BuildContext context, scrollController){
         return Container(
-          clipBehavior: Clip.hardEdge,
-          decoration: BoxDecoration(
-            borderRadius: 
-          ),
+          
         );
 
       },);
