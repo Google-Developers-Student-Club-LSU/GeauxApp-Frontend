@@ -46,3 +46,4 @@ app.*.map.json
 
 ##apiKey
 .env
+ios/Runner/AppDelegate.swift
