@@ -9,7 +9,7 @@ class AuthService {
 
   Future<void>? _refreshFuture;
 
-  Future<void> loginWithTokenFromBackend({
+  Future<void> loginWithTokenBackend({
     required String accessToken,
     required String refreshToken,
     required int expiresIn,
@@ -29,7 +29,7 @@ class AuthService {
 
   Future<void> refreshAccessToken() async {
     if (_refreshFuture != null) return _refreshFuture!;
-    _refreshFuture = _doRefreshAccessToken();
+    _refreshFuture = doRefreshAccessToken();
     try {
       await _refreshFuture;
     } finally {
@@ -37,7 +37,7 @@ class AuthService {
     }
   }
 
-  Future<void> _doRefreshAccessToken() async {
+  Future<void> doRefreshAccessToken() async {
     final refreshToken = await TokenStorage.getRefreshToken();
     if (refreshToken == null) {
       await TokenStorage.clear();
@@ -89,5 +89,10 @@ class AuthService {
     }
 
     return accessToken;
+  }
+
+  Future<void> logout() async {
+    await TokenStorage.clear();
+    _logger.info('User logged out, tokens cleared');
   }
 }

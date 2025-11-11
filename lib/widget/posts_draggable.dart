@@ -30,7 +30,7 @@ class PostsDraggable extends StatelessWidget {
         child: CustomScrollView(
           controller: scrollController,
           slivers: [
-            draggableBar,
+            // draggableBar,
             SliverAppBar(
               title: Text("Postss"),
               primary: true,
