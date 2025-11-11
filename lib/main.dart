@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geaux_app_frontend/screens/login_page.dart';
+import 'package:geaux_app_frontend/widget/comment.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -54,8 +56,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -103,9 +103,26 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Go to Login Page'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                );
+              },
+              child: const Text('Go to Login Page'),
+            ),
+ CommentWidget(
+                      commentID: 1,
+                      userName: "John doe",
+                      date: "12-2-2024",
+                      message: "Ratio",
+                      likeCount: 69,
+                      hasLiked: false,
+                    )
           ],
         ),
-      ), 
+      ),
     );
   }
 }
