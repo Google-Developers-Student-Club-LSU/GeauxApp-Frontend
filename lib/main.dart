@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:geaux_app_frontend/constant.dart';
 import 'package:geaux_app_frontend/screens/map_page.dart';
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
@@ -15,9 +16,7 @@ class MyApp extends StatelessWidget {
    
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme:appTheme,
       home: MapPage(),
     );
   }

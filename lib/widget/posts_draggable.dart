@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geaux_app_frontend/constant.dart';
+import 'package:geaux_app_frontend/widget/custom_button.dart';
 
 class PostsDraggable extends StatefulWidget {
   const PostsDraggable({
@@ -15,12 +16,28 @@ class PostsDraggable extends StatefulWidget {
 
 class _PostsDraggableState extends State<PostsDraggable> {
   double _fontSize = 40;
+  double _dynamicPadding = 5;
 
   @override
   void initState() {
     super.initState();
     // Listen for scroll updates
     widget.draggableScrollableController.addListener(_updateFontSize);
+    widget.draggableScrollableController.addListener(_updatePadding);
+
+  }
+
+  void _updatePadding(){
+    final extent = widget.draggableScrollableController.size;
+    const minExtent = 0.1;
+    const maxExtent = 0.95;
+    const minPadding = 5.0;
+    const maxPadding = 15.0;
+     final normalized =
+        ((extent - minExtent) / (maxExtent - minExtent)).clamp(0, 1);
+    final changePadding = minPadding + (maxPadding - minPadding) * normalized;
+
+    setState(() => _dynamicPadding = changePadding);
   }
 
   void _updateFontSize() {
@@ -38,9 +55,15 @@ class _PostsDraggableState extends State<PostsDraggable> {
     setState(() => _fontSize = newFontSize);
   }
 
+  void newPostButton(){
+    print("Hello");
+  }
+
   @override
   void dispose() {
     widget.draggableScrollableController.removeListener(_updateFontSize);
+    widget.draggableScrollableController.removeListener(_updatePadding);
+
     super.dispose();
   }
 
@@ -56,7 +79,7 @@ class _PostsDraggableState extends State<PostsDraggable> {
           
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(
-            color: Colors.black.withValues(alpha: 0.5),
+            color: dragglePostBackground,
             border: Border.all(color: Colors.black),
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(standardBorderRadius),
@@ -77,6 +100,14 @@ class _PostsDraggableState extends State<PostsDraggable> {
                 pinned: false,
                 centerTitle: false,
               ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical:_dynamicPadding,
+                    horizontal: 20
+                  ),
+                  child: CustomButton(onPressed: newPostButton, child: Text("New Post")),
+                ))
             ],
           ),
         );

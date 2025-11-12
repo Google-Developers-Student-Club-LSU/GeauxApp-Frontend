@@ -1,11 +1,14 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 
 const standardBorderRadius = 25.0;
+
+
+Color dragglePostBackground = Colors.black.withValues(alpha: 0.5);
+Color scaffoldBackgroundColor = Colors.white;
 const lsuColor = Color(0xFF461D7C);
 
 
@@ -35,6 +38,55 @@ SliverToBoxAdapter draggableBar = SliverToBoxAdapter(
 //     fontSize: 40,
 //   ),
 // );
+
+
+ThemeData appTheme = ThemeData(
+    useMaterial3: true,
+    scaffoldBackgroundColor: scaffoldBackgroundColor,
+    textTheme: TextTheme(
+      headlineLarge: headlineLargeTextStyle,
+      headlineMedium: headlineMediumTextStyle,
+      headlineSmall: headlineSmallTextStyle,
+      bodyMedium: bodyMediumTextStyle,
+      bodySmall: bodySmallTextStyle,
+
+    )
+);
+
+
+TextStyle headlineLargeTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 40,
+  fontStyle: FontStyle.normal,
+  overflow: TextOverflow.ellipsis,
+);
+TextStyle headlineMediumTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 30,
+  fontStyle: FontStyle.normal,
+  overflow: TextOverflow.ellipsis,
+);
+TextStyle headlineSmallTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 20,
+  fontStyle: FontStyle.normal,
+  overflow: TextOverflow.ellipsis,
+);
+
+TextStyle bodyMediumTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 15,
+  fontStyle: FontStyle.normal,
+  overflow: TextOverflow.fade,
+);
+
+TextStyle bodySmallTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 12,
+  fontStyle: FontStyle.normal,
+  overflow: TextOverflow.fade,
+);
+
 
 
 const lsuCampus = [

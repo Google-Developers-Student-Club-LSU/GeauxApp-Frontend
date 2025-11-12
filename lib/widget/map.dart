@@ -13,7 +13,7 @@ class MapWidget extends StatefulWidget {
 class _MapWidgetState extends State<MapWidget> {
   GoogleMapController? _mapController;
 
-  final LatLng _center = const LatLng(30.4133, -91.1800);
+  final LatLng _center = const LatLng(30.4120, -91.1838);
 
   late final Set<Polygon> _polygons = {
     const Polygon(
@@ -40,11 +40,10 @@ class _MapWidgetState extends State<MapWidget> {
     return GoogleMap(
       onMapCreated: (controller) {
         _mapController = controller;
-        // Optional: move/zoom to fit the polygon bounds here
       },
       initialCameraPosition: CameraPosition(
         target: _center,
-        zoom: 14.1, 
+        zoom: 14.11, 
       ),
       myLocationEnabled: true,
       myLocationButtonEnabled: false,
