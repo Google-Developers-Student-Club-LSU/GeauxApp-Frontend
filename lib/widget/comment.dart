@@ -1,5 +1,75 @@
 import 'package:flutter/material.dart';
 
+// Data class to represent a comment
+class CommentData {
+  final int commentID;
+  final Image? userAvatar;
+  final String userName;
+  final String date;
+  final String message;
+  final int likeCount;
+  final bool hasLiked;
+
+  const CommentData({
+    required this.commentID,
+    this.userAvatar,
+    this.userName = "",
+    this.date = "",
+    this.message = "Unable to Load Comment",
+    this.likeCount = 0,
+    this.hasLiked = false,
+  });
+}
+
+// Scrollable comment section widget
+//view an example on how to load it at end of file
+class CommentSection extends StatelessWidget {
+  final List<CommentData> comments;
+  final EdgeInsets? padding;
+  final ScrollPhysics? physics;
+
+  const CommentSection({
+    super.key,
+    required this.comments,
+    this.padding,
+    this.physics,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (comments.isEmpty) {
+      return const Center(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Text(
+            'No comments yet',
+            style: TextStyle(color: Colors.grey, fontSize: 14),
+          ),
+        ),
+      );
+    }
+
+    return ListView.builder(
+      padding: padding ?? const EdgeInsets.symmetric(vertical: 8),
+      physics: physics ?? const AlwaysScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: comments.length,
+      itemBuilder: (context, index) {
+        final comment = comments[index];
+        return CommentWidget(
+          commentID: comment.commentID,
+          userAvatar: comment.userAvatar,
+          userName: comment.userName,
+          date: comment.date,
+          message: comment.message,
+          likeCount: comment.likeCount,
+          hasLiked: comment.hasLiked,
+        );
+      },
+    );
+  }
+}
+
 class CommentWidget extends StatefulWidget {
   //local states
   final int commentID;
@@ -29,24 +99,18 @@ class _CommentWidgetState extends State<CommentWidget> {
   @override
   void initState() {
     super.initState();
-
-    // This code runs only once when the widget is first created
-    //check if provider has loaded data for comment id
-    //if not call load_comment in services
-  }
+    // todo: if you are planning to only provide a comment id as a prop, make an api call and load into state
+     }
 
   void onUserTap() {
     print("tapped user");
-    // go to user page
+    // todo: have it go to user page
   }
 
   void onLikeToggle() {
     print("tapped like");
-    //call service func to update comment api
-    //set has liked dto be true or false and refresh like count
-    setState(() {
-      // update state here
-    });
+    //todo: call service func to update comment api
+    //todo: set has liked dto be true or false and refresh like count
   }
 
   @override
