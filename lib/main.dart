@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geaux_app_frontend/screens/login_page.dart';
+import 'package:geaux_app_frontend/widget/comment.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -102,6 +103,62 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               child: const Text('Go to Login Page'),
+            ),
+            const SizedBox(height: 10),
+            SizedBox(
+              height: 400,
+              child: CommentSection(
+                comments: [
+                  CommentData(
+                    commentID: 1,
+                    userName: "Alice Johnson",
+                    date: "12-5-2024",
+                    message: "This is amazing! Great work!",
+                    likeCount: 24,
+                    hasLiked: true,
+                  ),
+                  CommentData(
+                    commentID: 2,
+                    userName: "Bob Smith",
+                    date: "12-4-2024",
+                    message: "Love this post! Keep it up!",
+                    likeCount: 15,
+                    hasLiked: false,
+                  ),
+                  CommentData(
+                    commentID: 3,
+                    userName: "Charlie Brown",
+                    date: "12-3-2024",
+                    message: "Really helpful content, thanks for sharing!",
+                    likeCount: 42,
+                    hasLiked: true,
+                  ),
+                  CommentData(
+                    commentID: 4,
+                    userName: "Diana Prince",
+                    date: "12-2-2024",
+                    message: "Can't wait to see more!",
+                    likeCount: 8,
+                    hasLiked: false,
+                  ),
+                  CommentData(
+                    commentID: 5,
+                    userName: "Eve Wilson",
+                    date: "12-1-2024",
+                    message: "This is exactly what I needed!",
+                    likeCount: 33,
+                    hasLiked: true,
+                  ),
+                  CommentData(
+                    commentID: 6,
+                    userName: "Frank Miller",
+                    date: "11-30-2024",
+                    message: "Awesome!",
+                    likeCount: 19,
+                    hasLiked: false,
+                  ),
+                ],
+              ),
             ),
           ],
         ),
