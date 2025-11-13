@@ -57,18 +57,21 @@ ThemeData appTheme = ThemeData(
 TextStyle headlineLargeTextStyle = TextStyle(
   color: Colors.white,
   fontSize: 40,
+  fontFamily: "PTSans",
   fontStyle: FontStyle.normal,
   overflow: TextOverflow.ellipsis,
 );
 TextStyle headlineMediumTextStyle = TextStyle(
   color: Colors.white,
   fontSize: 30,
+  fontFamily: "PTSans",
   fontStyle: FontStyle.normal,
   overflow: TextOverflow.ellipsis,
 );
 TextStyle headlineSmallTextStyle = TextStyle(
   color: Colors.white,
   fontSize: 20,
+  fontFamily: "PTSans",
   fontStyle: FontStyle.normal,
   overflow: TextOverflow.ellipsis,
 );
@@ -76,6 +79,7 @@ TextStyle headlineSmallTextStyle = TextStyle(
 TextStyle bodyMediumTextStyle = TextStyle(
   color: Colors.white,
   fontSize: 15,
+  fontFamily: "PTSans",
   fontStyle: FontStyle.normal,
   overflow: TextOverflow.fade,
 );
@@ -83,6 +87,7 @@ TextStyle bodyMediumTextStyle = TextStyle(
 TextStyle bodySmallTextStyle = TextStyle(
   color: Colors.white,
   fontSize: 12,
+  fontFamily: "PTSans",
   fontStyle: FontStyle.normal,
   overflow: TextOverflow.fade,
 );

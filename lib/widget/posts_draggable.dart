@@ -93,10 +93,12 @@ class _PostsDraggableState extends State<PostsDraggable> {
             slivers: [
               draggableBar,
               SliverAppBar(
+                toolbarHeight: _fontSize,
                 backgroundColor: Colors.transparent,
+                
                 title: Text(
                   "Posts",
-                  style: TextStyle(fontSize: _fontSize, color: Colors.white),
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontSize: _fontSize, color: Colors.black),
                 ),
                 primary: false,
                 pinned: false,
@@ -105,7 +107,7 @@ class _PostsDraggableState extends State<PostsDraggable> {
                 SliverToBoxAdapter(
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                        vertical: _dynamicPadding,
+                        vertical: _dynamicPadding + 10,
                         horizontal: 20,
                       ),
                       child: Row(
