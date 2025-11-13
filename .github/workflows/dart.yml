@@ -1,0 +1,33 @@
+name: Flutter
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Set up Flutter (stable channel)
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Uncomment this step to verify the use of 'flutter format' on each commit.
+      # - name: Verify formatting
+      #   run: flutter format --output=none --set-exit-if-changed .
+
+      - name: Analyze project source
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
