@@ -2,5 +2,6 @@
   "python-envs.defaultEnvManager": "ms-python.python:conda",
   "python-envs.defaultPackageManager": "ms-python.python:conda",
   "python-envs.pythonProjects": [],
-  "cmake.sourceDirectory": "C:/Users/malik/Documents/VSC projects/GDSC Group App/GeauxApp-Frontend/linux"
+  "cmake.sourceDirectory": "C:/Users/malik/Documents/VSC projects/GDSC Group App/GeauxApp-Frontend/linux",
+  "java.configuration.updateBuildConfiguration": "interactive"
 }
