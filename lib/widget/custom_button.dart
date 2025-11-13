@@ -14,20 +14,20 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(standardBorderRadius),
+      borderRadius: BorderRadius.circular(1),
       onTap: onPressed,
-      overlayColor: WidgetStateProperty.all(const Color(0xFF9077B0)),
+      overlayColor: WidgetStateProperty.all(Colors.white),
       child: Container(
         height: 50,
-        width: MediaQuery.of(context).size.width * 0.3, // move here!
+        width: MediaQuery.of(context).size.width * 0.4, // move here!
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(standardBorderRadius),
-          color: Theme.of(context).colorScheme.primary,
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
         ),
         alignment: Alignment.center, // centers text
         child: DefaultTextStyle(
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.black, fontSize: 20),
           child: child,
         ),
       ),

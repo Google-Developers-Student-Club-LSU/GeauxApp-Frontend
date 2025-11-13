@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:geaux_app_frontend/constant.dart';
 import 'package:geaux_app_frontend/widget/custom_button.dart';
+import 'package:geaux_app_frontend/widget/post_cart.dart';
 
 class PostsDraggable extends StatefulWidget {
   const PostsDraggable({
@@ -100,14 +102,35 @@ class _PostsDraggableState extends State<PostsDraggable> {
                 pinned: false,
                 centerTitle: false,
               ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical:_dynamicPadding,
-                    horizontal: 20
+                SliverToBoxAdapter(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: _dynamicPadding,
+                        horizontal: 20,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          CustomButton(
+                            onPressed: newPostButton,
+                            child: Text("New Post"),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  child: CustomButton(onPressed: newPostButton, child: Text("New Post")),
-                ))
+                SliverLayoutBuilder(
+                builder: (context, constraints) {
+                  return SliverToBoxAdapter(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          PostCardBody()
+                        ],
+                      ),
+                  );
+                },
+              )
             ],
           ),
         );
