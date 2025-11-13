@@ -7,7 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 const standardBorderRadius = 25.0;
 
 
-Color dragglePostBackground = Colors.black.withValues(alpha: 0.5);
+Color dragglePostBackground = Color(0xFF315FAD).withValues(alpha: 0.85);
 Color scaffoldBackgroundColor = Colors.white;
 const lsuColor = Color(0xFF461D7C);
 
