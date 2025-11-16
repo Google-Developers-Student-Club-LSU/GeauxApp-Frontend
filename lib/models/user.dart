@@ -1,6 +1,5 @@
-// user.dart
 
-enum UserRole { admin, member }
+enum UserRole { admin, mod, member }
 
 class User {
   final String id;
@@ -21,19 +20,17 @@ class User {
     required this.updatedAt,
   });
 
-
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       id: json['id'] as String,
       username: json['username'] as String,
       displayName: json['displayName'] as String,
       email: json['email'] as String,
-      role: _roleFromString(json['role']),
-      createdAt: DateTime.parse(json['createdAt']),
-      updatedAt: DateTime.parse(json['updatedAt']),
+      role: _roleFromString(json['role'] as String),
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
   }
-
 
   Map<String, dynamic> toJson() {
     return {
@@ -41,12 +38,11 @@ class User {
       "username": username,
       "displayName": displayName,
       "email": email,
-      "role": role.name, // enum → string
+      "role": role.name, // "admin" | "mod" | "member"
       "createdAt": createdAt.toIso8601String(),
       "updatedAt": updatedAt.toIso8601String(),
     };
   }
-
 
   User copyWith({
     String? id,
@@ -68,11 +64,12 @@ class User {
     );
   }
 
-
   static UserRole _roleFromString(String value) {
     switch (value) {
       case 'admin':
         return UserRole.admin;
+      case 'mod':
+        return UserRole.mod;
       case 'member':
         return UserRole.member;
       default:

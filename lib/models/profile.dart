@@ -22,7 +22,7 @@ class Profile {
     return Profile(
       id: json['id'] as String,
       userId: json['userId'] as String,
-      avatar: json['avatar'] as String?, // can be null
+      avatar: json['avatar'] as String?,
       bio: json['bio'] as String? ?? "",
       major: json['major'] as String? ?? "Undecided",
       affiliation: json['affiliation'] as String,
