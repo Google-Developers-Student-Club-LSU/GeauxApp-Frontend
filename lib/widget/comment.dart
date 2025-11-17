@@ -127,9 +127,7 @@ class _CommentWidgetState extends State<CommentWidget> {
             child: CircleAvatar(
               radius: 20,
               backgroundColor: Colors.grey.shade300,
-              child: widget.userAvatar == null
-                  ? const Icon(Icons.person, color: Colors.grey)
-                  : widget.userAvatar,
+              child: widget.userAvatar ?? const Icon(Icons.person, color: Colors.grey),
             ),
           ),
 

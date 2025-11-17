@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geaux_app_frontend/constant.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
