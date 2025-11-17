@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:geaux_app_frontend/constant.dart';
+import 'package:geaux_app_frontend/models/post.dart';
 
 class PostCardBody extends StatelessWidget {
    PostCardBody({
     super.key,
-    this.imagePath,
   });
 
   String? imagePath;
