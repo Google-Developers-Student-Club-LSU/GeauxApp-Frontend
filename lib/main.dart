@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
-import 'package:geaux_app_frontend/screens/login_page.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:geaux_app_frontend/constant.dart';
 import 'package:geaux_app_frontend/screens/map_page.dart';
 import 'package:geaux_app_frontend/services/auth_state.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +19,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(

@@ -3,6 +3,10 @@
         android:label="geaux_app_frontend"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_api_key" 
+            />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -30,6 +34,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        
+
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
