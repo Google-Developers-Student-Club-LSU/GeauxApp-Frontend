@@ -2,10 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geaux_app_frontend/constant.dart';
+import 'package:geaux_app_frontend/screens/login_page.dart';
 import 'package:geaux_app_frontend/screens/map_page.dart';
 import 'package:geaux_app_frontend/services/auth_state.dart';
 import 'package:provider/provider.dart';
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: ".env");
   runApp(
     ChangeNotifierProvider(
       create: (_) => AuthState(),
@@ -22,9 +24,7 @@ class MyApp extends StatelessWidget {
    
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme: appTheme,
       home: const RootPage(),
     );
   }
@@ -43,6 +43,6 @@ class RootPage extends StatelessWidget {
       );
     }
 
-    return authState.isLoggedIn ? const MapPage() : const LoginPage();
+    return  const LoginPage();
   }
 }

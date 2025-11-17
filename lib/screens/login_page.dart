@@ -1,4 +1,7 @@
+import 'package:auth_buttons/auth_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:geaux_app_frontend/constant.dart';
+import 'package:geaux_app_frontend/widget/map.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 import '../services/api_service.dart';
@@ -69,15 +72,41 @@ class LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     final authState = Provider.of<AuthState>(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('Login Page')),
-      body: Center(
-        child: authState.isLoading
-          ? const CircularProgressIndicator()
-          : ElevatedButton.icon(
-              onPressed: handleLogin,
-              icon: const Icon(Icons.login),
-              label: const Text('Sign in with Microsoft'),
+      body: Stack(
+        children: [
+          MapWidget(),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height ,
+            decoration: BoxDecoration(
+              color: Colors.black12.withValues(alpha: 0.5),
+                    ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Welcome to GeauxApp", 
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.w400, overflow: TextOverflow.visible,),
+                  ),
+                ),
+                SizedBox(height: 30,),
+                Center(
+                  child: authState.isLoading
+                    ? const CircularProgressIndicator()
+                    : MicrosoftAuthButton(
+                        onPressed: () {},
+                        style: AuthButtonStyle(
+                          borderRadius: standardBorderRadius
+                        ),
+                      ),
+                ),
+              ],
             ),
+          ),
+        ],
       ),
     );
   }
