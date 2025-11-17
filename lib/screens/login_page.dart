@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:auth_buttons/auth_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:geaux_app_frontend/constant.dart';
+import 'package:geaux_app_frontend/screens/map_page.dart';
 import 'package:geaux_app_frontend/widget/map.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +26,7 @@ class LoginPageState extends State<LoginPage> {
 
   Future<void> handleLogin() async {
     final authState = Provider.of<AuthState>(context, listen: false);
-
+    Navigator.pushReplacement(context, MaterialPageRoute<void>(builder: (context) => MapPage()));
     try {
       final response = await http.get(
         Uri.parse('${authState.authservice.backendBaseUrl}/auth/microsoft-login'),
@@ -75,37 +78,45 @@ class LoginPageState extends State<LoginPage> {
       body: Stack(
         children: [
           MapWidget(),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height ,
-            decoration: BoxDecoration(
-              color: Colors.black12.withValues(alpha: 0.5),
-                    ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("Welcome to GeauxApp", 
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.w400, overflow: TextOverflow.visible,),
-                  ),
+            BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 5,),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                decoration: BoxDecoration(
+                  color: Colors.black12.withValues(alpha: 0.5),
                 ),
-                SizedBox(height: 30,),
-                Center(
-                  child: authState.isLoading
-                    ? const CircularProgressIndicator()
-                    : MicrosoftAuthButton(
-                        onPressed: () {},
-                        style: AuthButtonStyle(
-                          borderRadius: standardBorderRadius
-                        ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Welcome to GeauxApp",
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineLarge
+                            ?.copyWith(
+                              fontWeight: FontWeight.w400,
+                              overflow: TextOverflow.visible),
                       ),
+                    ),
+                    const SizedBox(height: 30),
+                    Center(
+                      child: authState.isLoading
+                          ? const CircularProgressIndicator()
+                          : MicrosoftAuthButton(
+                              onPressed: () => handleLogin(),
+                              style: AuthButtonStyle(
+                                borderRadius: standardBorderRadius,
+                              ),
+                            ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ),
+              ),
+            )
         ],
       ),
     );
