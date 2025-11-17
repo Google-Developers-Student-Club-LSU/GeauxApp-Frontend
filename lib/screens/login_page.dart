@@ -1,21 +1,84 @@
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
+import 'package:provider/provider.dart';
+import '../services/api_service.dart';
+import '../services/auth_state.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
-class LoginPage extends StatelessWidget {
+
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
-  
+
+  @override
+  State<LoginPage> createState() => LoginPageState();
+}
+
+class LoginPageState extends State<LoginPage> {
+  final ApiService api = ApiService();
+  static final logger = Logger('LoginPage');
+
+  Future<void> handleLogin() async {
+    final authState = Provider.of<AuthState>(context, listen: false);
+
+    try {
+      final response = await http.get(
+        Uri.parse('${authState.authservice.backendBaseUrl}/auth/microsoft-login'),
+        headers: {'Content-Type': 'application/json'},
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+
+        // Use AuthState to handle login & token storage
+        final success = await authState.loginWithBackend(
+          accessToken: data['access_token'],
+          refreshToken: data['refresh_token'],
+          expiresIn: data['expires_in'],
+        );
+
+        if (success) {
+          final profile = await api.getUserProfile();
+          if (profile != null) {
+            logger.info('User logged in: ${profile['name']}');
+          }
+
+          if (!mounted) return;
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Login successful!')),
+          );
+          // No need to manually navigate; RootPage will rebuild automatically
+        } else {
+          throw Exception('Login failed inside AuthState');
+        }
+      } else {
+        throw Exception('Login failed: ${response.statusCode}');
+      }
+    } catch (e, stack) {
+      logger.severe('Login failed', e, stack);
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Login failed. Please try again.')),
+      );
+    } finally {
+      if (mounted) authState.setLoading(false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    
+    final authState = Provider.of<AuthState>(context);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login Page'),
-      ),
-      body: const Center(
-        child: Text('Welcome to the Login Page!'),
+      appBar: AppBar(title: const Text('Login Page')),
+      body: Center(
+        child: authState.isLoading
+          ? const CircularProgressIndicator()
+          : ElevatedButton.icon(
+              onPressed: handleLogin,
+              icon: const Icon(Icons.login),
+              label: const Text('Sign in with Microsoft'),
+            ),
       ),
     );
   }
 }
-// call to https, superbase - backend
-//storing the authentication token securely and refreshing it when necessary

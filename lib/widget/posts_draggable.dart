@@ -134,6 +134,18 @@ class _PostsDraggableState extends State<PostsDraggable> {
               )
             ],
           ),
+        child: CustomScrollView(
+          controller: scrollController,
+          slivers: [
+            // draggableBar,
+            SliverAppBar(
+              title: Text("Postss"),
+              primary: true,
+              pinned: true,
+              centerTitle: false,
+            )
+          ],
+        ),
         );
       },
     );

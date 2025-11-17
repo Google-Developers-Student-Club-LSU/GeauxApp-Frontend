@@ -3,9 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geaux_app_frontend/constant.dart';
 import 'package:geaux_app_frontend/screens/map_page.dart';
-Future<void> main() async {
-  await dotenv.load(fileName: ".env");
-  runApp(const MyApp());
+import 'package:geaux_app_frontend/services/auth_state.dart';
+import 'package:provider/provider.dart';
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => AuthState(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,8 +22,27 @@ class MyApp extends StatelessWidget {
    
     return MaterialApp(
       title: 'Flutter Demo',
-      theme:appTheme,
-      home: MapPage(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      ),
+      home: const RootPage(),
     );
+  }
+}
+
+class RootPage extends StatelessWidget {
+  const RootPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final authState = Provider.of<AuthState>(context);
+
+    if (authState.isLoading) {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    return authState.isLoggedIn ? const MapPage() : const LoginPage();
   }
 }
