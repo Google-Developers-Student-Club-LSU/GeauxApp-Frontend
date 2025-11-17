@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:geaux_app_frontend/pages/login_page.dart';
-import 'package:geaux_app_frontend/pages/map_page.dart';
+import 'package:geaux_app_frontend/screens/login_page.dart';
+import 'package:geaux_app_frontend/screens/map_page.dart';
 import 'package:geaux_app_frontend/services/auth_state.dart';
 import 'package:provider/provider.dart';
 void main() {
