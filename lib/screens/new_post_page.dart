@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'camera_page.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -32,6 +34,7 @@ class MyApp extends StatelessWidget {
 }
 
 class NewPostConfirmScreen extends StatefulWidget {
+  
   const NewPostConfirmScreen({super.key});
 
   @override
@@ -75,7 +78,12 @@ class _NewPostConfirmScreenState extends State<NewPostConfirmScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surfaceContainerLowest,
       appBar: AppBar(
-        leading: Icon(Icons.chevron_left, size: 32,),
+        leading: IconButton(
+          icon: Icon(Icons.chevron_left, size: 32),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         backgroundColor: Theme.of(context).colorScheme.surfaceContainerLowest,
         elevation: 0,
       ),
@@ -86,7 +94,6 @@ class _NewPostConfirmScreenState extends State<NewPostConfirmScreen> {
           //Image Input
           Container(
             height: 343,
-            width: 343,
             margin: EdgeInsets.symmetric(horizontal: 25),
             decoration: BoxDecoration(
               border: Border.all(
@@ -104,7 +111,6 @@ class _NewPostConfirmScreenState extends State<NewPostConfirmScreen> {
           //Title Text Input
           Container(
             height: 47,
-            width: 343,
             margin: EdgeInsets.symmetric(horizontal: 25),
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.surfaceContainerLowest,
@@ -132,7 +138,6 @@ class _NewPostConfirmScreenState extends State<NewPostConfirmScreen> {
           //Description Text Input
           Container(
             height: 130,
-            width: 343,
             margin: EdgeInsets.symmetric(horizontal: 25),
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.surfaceContainerLowest,
@@ -162,7 +167,6 @@ class _NewPostConfirmScreenState extends State<NewPostConfirmScreen> {
           //Location Box
           Container(
             height: 47,
-            width: 343,
             margin: EdgeInsets.symmetric(horizontal: 25),
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.surfaceContainerLowest,
@@ -188,7 +192,6 @@ class _NewPostConfirmScreenState extends State<NewPostConfirmScreen> {
             onTap: () => _selectDateTime(context),
             child: Container(
               height: 47,
-              width: 343,
               margin: EdgeInsets.symmetric(horizontal: 25),
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.surfaceContainerLowest,
@@ -251,9 +254,9 @@ class _NewPostConfirmScreenState extends State<NewPostConfirmScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadiusGeometry.circular(8),
                 ),
-                minimumSize: Size(343, 47),
+                minimumSize: Size(double.infinity, 47),
               ),
-              child: Text('Post'),
+              child: Text('Post', style: Theme.of(context).textTheme.bodyMedium),
             )),
           ),
         ],
