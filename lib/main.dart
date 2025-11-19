@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:geaux_app_frontend/screens/camera_page.dart';
 import 'package:geaux_app_frontend/screens/login_page.dart';
 import 'package:geaux_app_frontend/screens/map_page.dart';
+import 'package:geaux_app_frontend/screens/new_post_page.dart';
 import 'package:geaux_app_frontend/widget/comment.dart';
 
 void main() {
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: MapPage(),
+      home: CameraPage(cameras: [],),
     );
   }
 }
